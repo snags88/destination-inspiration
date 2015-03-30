@@ -18,9 +18,9 @@ If you want to contribute, please write tests and send pull requests!
 
 ## Authors
 
-[Rebecca Eakins](https://twitter.com/rebecca_eakins)
-[Laura Hines] (https://twitter.com/laurahines22)
-[Seiji Naganuma](https://seijinaganuma.com)
+* [Rebecca Eakins](https://twitter.com/rebecca_eakins)
+* [Laura Hines] (https://twitter.com/laurahines22)
+* [Seiji Naganuma](https://seijinaganuma.com)
 
 ## License
 
