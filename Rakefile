@@ -4,3 +4,10 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+desc "restart spring"
+task :reload_spring => :environment do
+  sh "spring stop"
+  sh "spring start > /dev/null"
+  puts "Spring has been restarted!"
+end
