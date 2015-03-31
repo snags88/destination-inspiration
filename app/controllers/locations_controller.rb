@@ -6,5 +6,7 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
+    @sample_lodgings = @location.lodgings.sample(4)
+    @weather = Wunderground.new
   end
 end

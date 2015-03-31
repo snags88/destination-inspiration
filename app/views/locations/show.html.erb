@@ -10,6 +10,16 @@
 
 <h1><%= @location.city %></h1>
 
+<p>
+  <%= @weather.current_weather(@location)["temp_string"] %>
+</p>
+
+<ul>
+  <% @sample_lodgings.each do |lodging| %>
+  <li><%= lodging.name %></li>
+  <% end %>
+</ul>
+
 
 <% @location.images.each do |image| %>
 
