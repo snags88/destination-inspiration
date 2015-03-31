@@ -3,8 +3,7 @@ class Image < ActiveRecord::Base
 
   def self.seed_images
     Location.all.each do |location|
-      location_photos = Flickr.new(location, 12).collect_gallery
-      location_photos.each do |photo|
+      Flickr.new(location, 12).gallery.each do |photo|
         Image.create(photo)
       end
     end

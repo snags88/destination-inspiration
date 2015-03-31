@@ -14,6 +14,7 @@ class Flickr
     @country = location_obj.country
     @location_id = location_obj.id
     @num = num_of_results
+    collect_gallery
   end
 
   # COLLECTING IMAGE DATA INTO A NESTED COLLECTION
