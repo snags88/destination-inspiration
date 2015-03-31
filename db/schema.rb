@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330222510) do
+ActiveRecord::Schema.define(version: 20150331140306) do
 
   create_table "attractions", force: :cascade do |t|
     t.string   "name"
@@ -99,5 +99,15 @@ ActiveRecord::Schema.define(version: 20150330222510) do
 
   add_index "lodgings", ["currency_id"], name: "index_lodgings_on_currency_id"
   add_index "lodgings", ["location_id"], name: "index_lodgings_on_location_id"
+
+  create_table "weathers", force: :cascade do |t|
+    t.integer  "month_number"
+    t.string   "month_name"
+    t.integer  "high_temp"
+    t.integer  "low_temp"
+    t.integer  "location_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
 end
