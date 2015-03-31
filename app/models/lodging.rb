@@ -2,9 +2,9 @@ class Lodging < ActiveRecord::Base
   belongs_to :currency
   belongs_to :location
 
-  def self.seed_data(data_points, occupancy)
+  def self.seed_data(data_points)
     Location.all.each do |location|
-      zilyo = Zilyo.new(location, ["airbnb"], data_points, occupancy)
+      zilyo = Zilyo.new(location, ["airbnb","hostelworld"], data_points)
       zilyo.listings_data.each do |listing|
         Lodging.find_or_create_by_zilyo_id(listing)
       end

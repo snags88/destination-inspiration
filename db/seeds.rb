@@ -8,7 +8,7 @@
 
 locations = Location.create([
   {city: "Marrakech", country: "Morocco", region: "Africa", latitude: 31.630000, longitude: -8.008889},
-  {city: "Siem Reap", country: "Cambodia", region: "Southeast Asia", latitude: 13.691538, longitude: 104.100133},
+  {city: "Siem Reap", country: "Cambodia", region: "Southeast Asia", latitude: 13.380936, longitude: 103.875046},
   {city: "Istanbul", country: "Turkey", region: "Europe", latitude: 41.005270, longitude: 28.976960},
   {city: "Hanoi", country: "Vietnam", region: "Southeast Asia", latitude: 21.027764, longitude: 105.834160},
   {city: "Prague", country: "Czech Republic", region: "Europe", latitude: 50.075538, longitude: 14.437800},
@@ -18,3 +18,5 @@ locations = Location.create([
   {city: "Buenos Aires", country: "Argentina", region: "South America", latitude: -34.603723, longitude: -58.381593},
   {city: "New York City", country: "United States", region: "North America", latitude: 40.712784, longitude: -74.005941}
 ])
+
+Lodging.seed_data(50)

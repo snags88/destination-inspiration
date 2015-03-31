@@ -8,11 +8,10 @@ class Zilyo
 
   attr_accessor :result
 
-  def initialize(location, providers, num_of_results, occupancy)
+  def initialize(location, providers, num_of_results)
     @location = location
     @providers = providers
     @num_of_results = num_of_results
-    @occupancy = occupancy
     api_call
     set_json
   end
@@ -36,7 +35,7 @@ class Zilyo
      {"name" => listing["attr"]["heading"],
       "description" => listing["attr"]["description"],
       "nightly_cost" => listing["price"]["nightly"],
-      "capacity" => listing["attr"]["beds"],
+      "num_of_beds" => listing["attr"]["beds"],
       "lodging_type" => listing["attr"]["propType"]["text"],
       "booking_url" => listing["provider"]["url"],
       "currency_id" => "USD",
@@ -46,7 +45,7 @@ class Zilyo
 
   private
     def api_url
-      URL + [occupany_string,coordinates_string, providers_string, results_per_page].join("&")
+      URL + [coordinates_string, max_distance, providers_string, results_per_page].join("&")
     end
 
     def coordinates_string
@@ -62,7 +61,8 @@ class Zilyo
       "resultsperpage=#{@num_of_results}"
     end
 
-    def occupany_string
-      "guests=#{@occupancy}"
+    def max_distance
+      "maxdistance=80"
     end
+
 end
