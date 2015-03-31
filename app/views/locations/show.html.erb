@@ -1,8 +1,1 @@
-<!-- 1. Hero image specific to the city selected (FLICKR API)
-2. City Name in pretty font (DB)
-3. Icon menu options (side nav w anchor links + scrolling)
-  - gallery? (FLICKR API)
-  - attractions (SEEDING THE DB MANUALLY)
-  - lodgings (ZILYO API)
-  - weather (WUNDERGROUND API)
-4. Links to index & api sponsors -->
+<%= @airbnb.api_call(@location, ["airbnb"], 5).raw_body %>
