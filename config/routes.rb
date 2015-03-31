@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   root 'locations#index'
   resources :locations
 
+  # resources :locations do
+  #   resources :images, only: [:index]
+  # end
+
+  
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

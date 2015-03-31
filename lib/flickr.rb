@@ -79,7 +79,7 @@ class Flickr
   end
 
   def random_indexes
-    @num.times.collect{ |i| rand(50)}
+    @num.times.collect{ |i| rand(100)}
   end
 
   # OWNER AND SOURCE SEARCH
