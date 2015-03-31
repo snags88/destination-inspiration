@@ -6,8 +6,6 @@ class Zilyo
   API_HEADER = { "X-Mashape-Key" => ENV['mashape_key'],
                         "Accept" => "application/json"}
 
-
-
   def initialize(location, providers, num_of_results)
     @location = location
     @providers = providers
