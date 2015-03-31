@@ -18,3 +18,5 @@ locations = Location.create([
   {city: "Buenos Aires", country: "Argentina", region: "South America", latitude: -34.603723, longitude: -58.381593},
   {city: "New York City", country: "United States", region: "North America", latitude: 40.712784, longitude: -74.005941}
 ])
+
+Image.seed_images

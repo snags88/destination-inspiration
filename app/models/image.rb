@@ -1,9 +1,12 @@
 class Image < ActiveRecord::Base
   belongs_to :location
 
-  def self.add_images
+  def self.seed_images
     Location.all.each do |location|
-      Flickr.new(location, 10)
+      location_photos = Flickr.new(location, 12).collect_gallery
+      location_photos.each do |photo|
+        Image.create(photo)
+      end
     end
 
   end
