@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330222510) do
+ActiveRecord::Schema.define(version: 20150331191644) do
 
   create_table "attractions", force: :cascade do |t|
     t.string   "name"
@@ -88,13 +88,14 @@ ActiveRecord::Schema.define(version: 20150330222510) do
     t.string   "name"
     t.text     "description"
     t.float    "nightly_cost"
-    t.integer  "capacity"
+    t.integer  "num_of_beds"
     t.string   "lodging_type"
     t.text     "booking_url"
     t.integer  "currency_id"
     t.integer  "location_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "zilyo_id"
   end
 
   add_index "lodgings", ["currency_id"], name: "index_lodgings_on_currency_id"

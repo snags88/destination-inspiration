@@ -6,6 +6,6 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
-    @airbnb = Zilyo.new
+    @airbnb = Zilyo.new(@location, ["airbnb"], 5)
   end
 end
