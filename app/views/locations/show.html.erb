@@ -20,6 +20,16 @@
   <% end %>
 </ul>
 
+<br>
+
+<%= form_for([@location, Attraction.new]) do |f| %>
+  <%= f.text_field :name, placeholder: "Attraction Name"  %>
+  <%= f.text_area :description, placeholder: "Description" %>
+  <%= f.text_field :attraction_type, placeholder: "Type" %>
+  <%= f.submit %>
+<% end %>
+
+
 
 <% @location.images.each do |image| %>
 
