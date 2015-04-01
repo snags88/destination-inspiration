@@ -47,8 +47,6 @@ group :test, :development do
   gem 'pry'
   gem 'guard-rspec', require: false
   gem 'thin'
-  gem 'spring'
-  gem 'spring-watcher-listen'
 end
 
 group :production do

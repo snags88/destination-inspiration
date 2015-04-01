@@ -19,5 +19,17 @@ locations = Location.create([
   {city: "New York City", country: "United States", region: "North America", latitude: 40.712784, longitude: -74.005941}
 ])
 
-Lodging.seed_data(50)
+Location.find_by(:country => "Morocco").currency_locations.create(:currency => Currency.find_by(:symbol => "AED"))
+Location.find_by(:country => "Cambodia").currency_locations.create(:currency => Currency.find_by(:symbol => "KHR"))
+Location.find_by(:country => "Turkey").currency_locations.create(:currency => Currency.find_by(:symbol => "TRY"))
+Location.find_by(:country => "Vietnam").currency_locations.create(:currency => Currency.find_by(:symbol => "VND"))
+Location.find_by(:country => "Czech Republic").currency_locations.create(:currency => Currency.find_by(:symbol => "CZK"))
+Location.find_by(:country => "United Kingdom").currency_locations.create(:currency => Currency.find_by(:symbol => "GBP"))
+Location.find_by(:country => "Germany").currency_locations.create(:currency => Currency.find_by(:symbol => "EUR"))
+Location.find_by(:country => "Italy").currency_locations.create(:currency => Currency.find_by(:symbol => "EUR"))
+Location.find_by(:country => "Argentina").currency_locations.create(:currency => Currency.find_by(:symbol => "ARS"))
+Location.find_by(:country => "United States").currency_locations.create(:currency => Currency.find_by(:symbol => "USD"))
+
+Currency.seed_data
+Lodging.seed_data
 Image.seed_images

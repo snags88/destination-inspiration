@@ -40,7 +40,7 @@ class Zilyo
       "num_of_beds" => listing["attr"]["beds"],
       "lodging_type" => listing["attr"]["propType"]["text"],
       "booking_url" => listing["provider"]["url"],
-      "currency_id" => @location.currency.id,
+      "currency" => Currency.find_by(:symbol => "USD"),
       "location_id" => @location.id,
       "zilyo_id" => listing["id"]}
   end
