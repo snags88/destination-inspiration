@@ -2,6 +2,13 @@ class Lodging < ActiveRecord::Base
   belongs_to :currency
   belongs_to :location
 
+  def self.avg_cost_by_bed(location, num_of_beds)
+    select("AVG(nightly_cost) as average_cost, num_of_beds as beds").
+    where("location_id = ? AND num_of_beds = ?", location.id, num_of_beds).
+    group(:num_of_beds).
+    first
+  end
+
   def self.seed_data
     Location.all.each do |location|
       zilyo = Zilyo.new(location, ["airbnb","hostelworld"])
