@@ -9,4 +9,6 @@ class Location < ActiveRecord::Base
   has_many :lodgings
   has_many :images
 
+  validates :city, :country, :longitude, :latitude, :presence => true
+
 end
