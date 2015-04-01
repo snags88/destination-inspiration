@@ -20,6 +20,7 @@ class Zilyo
   end
 
   def api_call
+    Unirest::timeout(45)
     @response = Unirest.get(api_url, :headers => API_HEADER)
   end
 

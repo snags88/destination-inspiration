@@ -33,7 +33,6 @@ class Flickr
       # CAPTION
       caption = photo["title"]
 
-      binding.pry
       # FOR THE OWNER DEETS
       @owner_id = photo["owner"]
       source = owner_json["person"]["profileurl"]["_content"]
