@@ -10,9 +10,9 @@
 
 <h1><%= @location.city %></h1>
 
-<p>
-  <%= @weather.current_weather(@location)["temp_string"] %>
-</p>
+
+<p><%= @weather.current_weather(@location)["temp_string"] %></p>
+<p><%= @weather.forecast_text(@location) %></p>
 
 <ul>
   <% @sample_lodgings.each do |lodging| %>
@@ -22,7 +22,11 @@
 
 <br>
 
-<%= form_for([@location, Attraction.new]) do |f| %>
+<ul id="attraction-list">
+  <%= render partial: "locations/attraction", collection: @location.attractions, as: :attraction %>
+</ul>
+
+<%= form_for([@location, Attraction.new], html: {id: "attraction-form"}, :remote => true) do |f| %>
   <%= f.text_field :name, placeholder: "Attraction Name"  %>
   <%= f.text_area :description, placeholder: "Description" %>
   <%= f.text_field :attraction_type, placeholder: "Type" %>

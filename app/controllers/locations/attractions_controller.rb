@@ -1,19 +1,13 @@
 class Locations::AttractionsController < ApplicationController
 
-  def new
-  end
-
   def create
-
     @attraction = Attraction.new(attraction_params)
     @attraction.location_id = params[:location_id]
-
-    if @attraction.save
-      redirect_to @attraction.location
-    else
-      render 'locations/show'
+    @attraction.save
+    respond_to do |f|
+      f.js
     end
-  end 
+  end
 
   def update
   end
