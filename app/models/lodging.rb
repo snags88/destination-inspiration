@@ -4,9 +4,10 @@ class Lodging < ActiveRecord::Base
 
   def self.seed_data(data_points)
     Location.all.each do |location|
-      zilyo = Zilyo.new(location, ["airbnb","hostelworld"], data_points)
-      zilyo.listings_data.each do |listing|
-        Lodging.find_or_create_by_zilyo_id(listing)
+      zilyo = Zilyo.new(location, ["airbnb","hostelworld"])
+      1.upto(20) do |page|
+        zilyo.referesh_dataset(page)
+        zilyo.listings_data.each {|listing| Lodging.find_or_create_by_zilyo_id(listing)}
       end
     end
   end
