@@ -1,5 +1,7 @@
-<li>
+<li data-attraction-id="<%= attraction.id %>">
   <p>Name: <%= attraction.name %></p>
   <p>Description: <%= attraction.description %></p>
   <p>type: <%= attraction.attraction_type %></p>
+  <p><%= link_to "Edit", [attraction.location, attraction] %> </p>
+  <p><%= link_to "Destroy", [attraction.location, attraction], remote: true, method: :delete %> </p>
 </li>

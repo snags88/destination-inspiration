@@ -4,4 +4,8 @@ class Attraction < ActiveRecord::Base
 
   validates :name, :description, :attraction_type, presence: true
 
+  def self.find_by_params(params)
+    self.find_by(:id => params[:id], :location_id => params[:location_id])
+  end
+
 end

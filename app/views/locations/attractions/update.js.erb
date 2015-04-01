@@ -1,0 +1,2 @@
+var newLi = "<%= j(render 'locations/attraction', attraction: @attraction) %>";
+$("li[data-attraction-id=" + <%= @attraction.id %> + "]").replace(newLi);
