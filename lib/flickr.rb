@@ -4,7 +4,7 @@ class Flickr
 
   SEARCH_URL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=#{ENV["flickr_key"]}&sort=relevance&format=json&nojsoncallback=1"
 
-  OWNER_URL = "https://api.flickr.com/services/rest/?method=flickr.people.getInfo&api_key=129caade072f51df051a20980f3cc86d&format=json&nojsoncallback=1"
+  OWNER_URL = "https://api.flickr.com/services/rest/?method=flickr.people.getInfo&api_key=#{ENV["flickr_key"]}&format=json&nojsoncallback=1"
 
   attr_reader :gallery, :country
 
@@ -14,6 +14,7 @@ class Flickr
     @country = location_obj.country
     @location_id = location_obj.id
     @num = num_of_results
+
     collect_gallery
   end
 
@@ -32,6 +33,7 @@ class Flickr
       # CAPTION
       caption = photo["title"]
 
+      binding.pry
       # FOR THE OWNER DEETS
       @owner_id = photo["owner"]
       source = owner_json["person"]["profileurl"]["_content"]
