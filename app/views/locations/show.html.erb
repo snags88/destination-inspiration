@@ -11,22 +11,24 @@
 <h1><%= @location.city %></h1>
 
 <h3>Weather</h3>
-<p><%= @weather.current_weather(@location)["temp_string"] %></p>
-<p><%= @weather.forecast_text(@location) %></p>
+  <p><%= @weather.current_weather(@location)["temp_string"] %></p>
+  <p><%= @weather.forecast_text(@location) %></p>
 
 <h3>Lodging</h3>
 
-<%- @lodging_analytics.each do |bucket| -%>
-  <p>Beds: <%= bucket.beds %>, Avg Cost/Night: $<%= bucket.average_cost.round(2) %> </p><br>
-<%- end -%>
+  <%- @lodging_analytics.each do |bucket| -%>
+    <p>Beds: <%= bucket.beds %>, Avg Cost/Night: $<%= bucket.average_cost.round(2) %> </p><br>
+  <%- end -%>
 
-<ul>
-  <% @sample_lodgings.each do |lodging| %>
-  <li><%= lodging.name %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @sample_lodgings.each do |lodging| %>
+    <li><%= lodging.name %></li>
+    <% end %>
+  </ul>
 
-<br>
+  <br>
+
+<h3>Attractions</h3>
 
 <ul id="attraction-list">
   <%= render partial: "locations/attraction", collection: @location.attractions, as: :attraction %>
@@ -40,6 +42,7 @@
 <% end %>
 
 
+<h3>Images</h3>
 
 <% @location.images.each do |image| %>
 
