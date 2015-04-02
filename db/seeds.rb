@@ -54,12 +54,12 @@ Location.find_by(city: "Buenos Aires").language_locations.create(:language => La
 Location.find_by(city: "Buenos Aires").language_locations.create(:language => Language.find_by(:name => "Italian"))
 Location.find_by(city: "New York City").language_locations.create(:language => Language.find_by(:name => "English"))
 
-# Lodging.seed_data
+Lodging.seed_data
 
 Location.find_by(city: "Marrakech").images.create({url: "https://farm9.staticflickr.com/8580/15680040273_2e3e51202b_b.jpg", source: "https://www.flickr.com/photos/marasweltreisen", image_type: "hero", caption: "Marrakech"})
 Location.find_by(city: "Siem Reap").images.create({url: "https://farm8.staticflickr.com/7447/8718052701_2e1a6b64da_h.jpg", source: " https://www.flickr.com/photos/chrisbastian", image_type: "hero", caption: "Siem Reap"})
 Location.find_by(city: "Istanbul").images.create({url: "https://farm4.staticflickr.com/3812/13806413813_6c35ef719c_b.jpg", source: "https://www.flickr.com/photos/ahmetkilci", image_type: "hero", caption: "Istanbul"})
-Location.find_by(city: "Hanoi").images.create({url: "https://farm8.staticflickr.com/7233/7384948350_485e8e12af_b.jpg", source: "https://www.flickr.com/photos/jean-pierre-chudeau", image_type: "hero", caption: "Hanoi"}
+Location.find_by(city: "Hanoi").images.create({url: "https://farm8.staticflickr.com/7233/7384948350_485e8e12af_b.jpg", source: "https://www.flickr.com/photos/jean-pierre-chudeau", image_type: "hero", caption: "Hanoi"})
 Location.find_by(city: "Prague").images.create({url: "https://farm8.staticflickr.com/7422/10066191593_326757cdf3_b.jpg", source: "https://www.flickr.com/photos/65789667@N06", image_type: "hero", caption: "Prague"})
 Location.find_by(city: "London").images.create({url: "https://farm8.staticflickr.com/7002/6564991705_c4af8baa66_b.jpg", source: "https://www.flickr.com/photos/38181284@N06", image_type: "hero", caption: "London"})
 Location.find_by(city: "Berlin").images.create({url: "https://farm4.staticflickr.com/3824/11844962716_6ec011a82e_b.jpg", source: "https://www.flickr.com/photos/david-bank", image_type: "hero", caption: "Berlin"})

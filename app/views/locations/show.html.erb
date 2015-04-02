@@ -1,4 +1,4 @@
- <body>
+ <body style="background-image: url('<%= @location.hero_image_url %>');">
     <!-- Outer Container -->
     <div id="outer-container">
 
@@ -38,9 +38,9 @@
 
                 <!-- <p> text in .feature-text is larger  -->
                 <section class="feature-text">
+                <h1 style="color: white;">TESTING 123</h1>
                   <h1><strong><%= @location.city %>,</strong> <%= @location.country %></h1>
                   <h2><%= @location.region %></h2>
-                  <img src="/../public/rabbit.jpg"/>
                   <p class="feature-paragraph"><%= @location.description %> </p>
                   <h4>Current Weather</h4>
                   <p><%#= @weather.current_weather(@location)["temp_string"] %></p>
