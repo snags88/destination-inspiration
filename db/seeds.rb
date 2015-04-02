@@ -19,6 +19,8 @@ locations = Location.create([
   {city: "New York City", country: "United States", region: "North America", latitude: 40.712784, longitude: -74.005941}
 ])
 
+Currency.seed_data
+
 Location.find_by(city: "Marrakech").currency_locations.create(:currency => Currency.find_by(:symbol => "AED"))
 Location.find_by(city: "Siem Reap").currency_locations.create(:currency => Currency.find_by(:symbol => "KHR"))
 Location.find_by(city: "Istanbul").currency_locations.create(:currency => Currency.find_by(:symbol => "TRY"))
@@ -30,6 +32,27 @@ Location.find_by(city: "Rome").currency_locations.create(:currency => Currency.f
 Location.find_by(city: "Buenos Aires").currency_locations.create(:currency => Currency.find_by(:symbol => "ARS"))
 Location.find_by(city: "New York City").currency_locations.create(:currency => Currency.find_by(:symbol => "USD"))
 
-Currency.seed_data
+languages = %w(Arabic Berber Central Khmer English Turkish Vietnamese Czech Slovak German Italian Spanish)
+languages.each do |language|
+  Language.create(:name => language)
+end
+
+Location.find_by(city: "Marrakech").language_locations.create(:language => Language.find_by(:name => "Arabic"))
+Location.find_by(city: "Marrakech").language_locations.create(:language => Language.find_by(:name => "Berber"))
+Location.find_by(city: "Siem Reap").language_locations.create(:language => Language.find_by(:name => "Central Khmer"))
+Location.find_by(city: "Siem Reap").language_locations.create(:language => Language.find_by(:name => "English"))
+Location.find_by(city: "Istanbul").language_locations.create(:language => Language.find_by(:name => "Turkish"))
+Location.find_by(city: "Hanoi").language_locations.create(:language => Language.find_by(:name => "Vietnamese"))
+Location.find_by(city: "Prague").language_locations.create(:language => Language.find_by(:name => "Czech"))
+Location.find_by(city: "Prague").language_locations.create(:language => Language.find_by(:name => "Slovak"))
+Location.find_by(city: "Prague").language_locations.create(:language => Language.find_by(:name => "English"))
+Location.find_by(city: "London").language_locations.create(:language => Language.find_by(:name => "English"))
+Location.find_by(city: "Berlin").language_locations.create(:language => Language.find_by(:name => "German"))
+Location.find_by(city: "Berlin").language_locations.create(:language => Language.find_by(:name => "English"))
+Location.find_by(city: "Rome").language_locations.create(:language => Language.find_by(:name => "Italian"))
+Location.find_by(city: "Buenos Aires").language_locations.create(:language => Language.find_by(:name => "Spanish"))
+Location.find_by(city: "Buenos Aires").language_locations.create(:language => Language.find_by(:name => "Italian"))
+Location.find_by(city: "New York City").language_locations.create(:language => Language.find_by(:name => "English"))
+
 Lodging.seed_data
 Image.seed_images
