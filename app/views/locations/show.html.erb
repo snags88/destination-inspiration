@@ -1,55 +1,295 @@
-<!-- 1. Hero image specific to the city selected (FLICKR API)
-2. City Name in pretty font (DB)
-3. Icon menu options (side nav w anchor links + scrolling)
-  - gallery? (FLICKR API)
-  - attractions (SEEDING THE DB MANUALLY)
-  - lodgings (ZILYO API)
-  - weather (WUNDERGROUND API)
-4. Links to index & api sponsors -->
+ <body data-default-background-img='<%= image_tag("cat.jpg")%>' data-overlay="true" data-overlay-opacity="0.35">
+    <!-- Outer Container -->
+    <div id="outer-container">
+
+      <!-- Left Sidebar -->
+      <section id="left-sidebar">
+      
+
+        <!-- Menu Icon for smaller viewports -->
+        <div id="mobile-menu-icon" class="visible-xs" onClick="toggle_main_menu();"><span class="glyphicon glyphicon-th"></span></div>
+
+        <!-- ==================================================================
+        MAIN MENU 
+        ==================================================================  -->
+        <!-- Each menu item links to a section (<article class="section-wrapper...") in the main content below.
+             - set each <li> id to this format: "menu-item-[the id of the .section-wrapper to link to]".
+             - set href of each <a> to the id of the .section-wrapper to link to -->
+        <ul id="main-menu">
+          <li id="menu-item-text" class="menu-item scroll"><a href="#about">About</a></li>
+          <li id="menu-item-tabs" class="menu-item scroll"><a href="#lodgings">Lodging</a></li>
+          <li id="menu-item-featured" class="menu-item scroll"><a href="#gallery">Image Gallery</a></li>
+          <li id="menu-item-grid" class="menu-item scroll"><a href="#attractions">Attractions</a></li>
+          <li id="menu-item-contact" class="menu-item scroll"><a href="#add">share your travel story</a></li>
+        </ul><!-- #main-menu -->
+        <!-- ==================== END: MAIN MENU ==================== -->
+
+      </section><!-- #left-sidebar -->
+      <!-- end: Left Sidebar -->
+
+      <!-- ==================================================================
+      MAIN CONTENT
+      ==================================================================  -->
+      <!-- all the website sections are contained in the <article> tag with class ".section-wrapper" and a unique id.
+           - to edit / remove / create website sections, you have to handle the content contained in these <article> tags -->
+      <section id="main-content" class="clearfix">
+        
+        <!-- ==================== SECTION TYPE: Intro Text ==================== -->
+        <!-- This type of section should contain heading and intro paragraph. It can also include links to other sections -->
+        <!-- FOR EACH SECTION <article class="section-wrapper".. :
+             - remember to use a unique id, 
+             - (optional) set a "data-custom-background-img" attribute with a link to custom background image which will be used when the viewer scrolls to this section -->
+        <article id="intro" class="section-wrapper clearfix">
+          <div class="content-wrapper clearfix wow fadeInDown" data-wow-delay="0.3s">
+            <div class="col-sm-10 col-md-9 pull-right">
+
+              <!-- Start: Section content to edit -->
+
+                <!-- <p> text in .feature-text is larger  -->
+                <section class="feature-text">
+                  <h1><%= @location.city %></h1>
+                  <p><%= @location.country %></p>
+                  <!-- to add scrolling effects to links linking to same page section, add .link-scroll class -->
+                </section>
+
+              <!-- End: Section content to edit -->
+
+            </div><!-- .col-sm-10 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+        <!-- ==================== END: SECTION TYPE: Intro Text ==================== -->
+
+        <!-- ==================== SECTION TYPE: Text / Generic ==================== -->
+        <!-- This type of section should contain generic content (text, image, etc) -->
+        <!-- FOR EACH SECTION <article class="section-wrapper".. :
+             - remember to use a unique id, 
+             - (optional) set a "data-custom-background-img" attribute with a link to custom background image which will be used when the viewer scrolls to this section -->
+        <article id="about" class="section-wrapper clearfix">
+          <div class="content-wrapper clearfix">
+            <div class="col-sm-10 col-md-9 pull-right">
+
+              <!-- Start: Section content to edit -->
+
+                <h1 class="section-title">About</h1>
+
+                <p class="feature-paragraph"><img data-img-src="assets/images/other_images/transp-image5b.png" class="lazy pull-right" alt="Some nice pic">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod blanditiis, voluptas in! Doloribus, maxime, blanditiis. Facere error reprehenderit aut, praesentium obcaecati possimus unde, illum in rem vero voluptatibus sequi cupiditate.</p>
+                <h4>Current Weather</h4>
+                <p><%= @weather.current_weather(@location)["temp_string"] %></p>
+                <p><%= @weather.forecast_text(@location) %></p>
+                
+
+              <!-- End: Section content to edit --> 
+
+            </div><!-- .col-sm-10 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+        <!-- ==================== END: SECTION TYPE: Text / Generic ==================== -->
+
+        <!-- ==================== SECTION TYPE: Features Grid ==================== -->
+        <!-- This type of section should contain a grid with separate items consisting of an icon and text -->
+        <!-- FOR EACH SECTION <article class="section-wrapper".. :
+             - remember to use a unique id, 
+             - (optional) set a "data-custom-background-img" attribute with a link to custom background image which will be used when the viewer scrolls to this section -->
+        <article id="lodgings" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/bg2.jpg">
+          <div class="content-wrapper clearfix">
+            <div class="col-sm-11 col-md-10 pull-right">
+
+              <!-- Start: Section content to edit -->
+
+                <h1 class="section-title">Lodgings</h1>
+                
+                <!-- grid -->
+                <!-- change class "clearfix-for-2cols" to number of columns to correspond with "col-md-6" class for each grid item -->
+                <!-- check add_clear_items_to_fix_grid_items_different_heights_issue() function -->
+                <section class="grid row clearfix clearfix-for-2cols">
+                  <% @sample_lodgings.each do |lodging| %> <!-- featuring sample longings -->
+                  <!-- grid item -->
+                  <div class="grid-item col-md-6">
+                    <div class="item-content clearfix">
+                      <!-- <img data-img-src="assets/images/other_images/transp-image1.png" class="lazy icon" alt="Lorem Ipsum"> -->
+                      <!-- if you want to use a custom icon instead, replace the below <span> with the commented <img> above -->
+                      <span class="icon fa fa-area-chart"></span>
+                      <div class="text-content">
+                        <h5><%= lodging.name %></h5>
+                        <p><%= lodging.description.truncate(100, separator: ' ') %></p>
+                      </div>
+                    </div><!-- end: .item-content -->
+                  </div><!-- end: .grid-item -->
+                  <% end %> <!-- featuring sample longings END -->
+                </section><!-- end: grid -->
+
+              <!-- End: Section content to edit -->
+
+            </div><!-- .col-sm-11 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+        <!-- ==================== END: SECTION TYPE: Features Grid ==================== -->
+
+        <!-- ==================== SECTION TYPE: Featured Items ==================== -->
+        <!-- This type of section should contain a max. of 3 items each consisting of an image and text. Each item may be linked -->
+        <!-- FOR EACH SECTION <article class="section-wrapper".. :
+             - remember to use a unique id, 
+             - (optional) set a "data-custom-background-img" attribute with a link to custom background image which will be used when the viewer scrolls to this section -->
+        <article id="gallery" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/bg3.jpg">
+          <div class="content-wrapper clearfix">
+            <div class="col-sm-11 pull-right">
+
+              <!-- Start: Section content to edit -->
+
+                <h1 class="section-title">Featured</h1>
+              
+                <!-- feature columns -->
+                <section class="feature-columns row clearfix">
+
+                  <!-- FEATURED ITEM 3 -->
+                  <article class="feature-col col-md-4">
+                    <!-- to make a popup/modal link add an onClick function call to the function: 
+                        - populate_and_open_modal(event, '[id of popup content container - see below]', '[optional - selector to scroll to inside popup]', '[optional - add class to the modal container]') -->
+                    <!-- if you don't want to link the featured item, replace the below <a> with a <div class="thumbnail"> -->
+                    <a href="" onclick="populate_and_open_modal(event, 'modal-content-8', '', 'full-size');" class="thumbnail linked">
+                      <div class="image-container">
+                        <img data-img-src="#" class="lazy item-thumbnail" alt="Lorem Ipsum">
+                      </div>
+                      <div class="caption">
+                        <h5><%= @location.city%> Gallery </h5>
+                        <p>See the sites through the eyes of other travelers.</p>
+                      </div><!-- .caption -->
+                    </a><!-- .thumbnail -->
+
+                    <!-- content which will be shown in the popup/modal when clicking on the above link 
+                        - it is important to set a unique id -->
+                    <div class="content-to-populate-in-modal" id="modal-content-8">
+                      <h1><%= @location.city%> Gallery</h1>
+                      <!-- alt image slider inside popup -->
+                      <!-- documentation for Owl Carousel: http://www.owlgraphic.com/owlcarousel/#how-to -->
+                      <!-- every Owl Carousel with class .popup-alt-image-gallery are initialised with same parameters when popup is showing (initialised in /js/initialise-functions.js) -->
+                      <div id="unique-id-for-alt-image-slider" class="owl-carousel popup-alt-image-gallery">
+
+                      <% @location.images.each do |image| %>
+                        <div class="item"><a href="<%= image.url %>" data-lightbox="popup-alt-gallery"><img class="lazyOwl" data-src="assets/images/other_images/gallery-thumb-1.jpg"></a></div>
+                        <% end %>
+                      </div>
+                    </div><!-- #modal-content-8 -->
+
+                  </article>
+                  <!-- END: FEATURED ITEM 3 -->
+
+                </section><!-- end: .feature-columns -->
+
+              <!-- End: Section content to edit -->
+
+            </div><!-- .col-sm-10 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+        <!-- ==================== END: SECTION TYPE: Featured Items ==================== -->
 
 
-<h1><%= @location.city %></h1>
+        <!-- ==================== SECTION TYPE: Tabs ==================== -->
+        <!-- This type of section should contain generic content in tabs -->
+        <!-- More information about Bootstrap Tabs can be found on http://getbootstrap.com/javascript/#tabs -->
+        <!-- FOR EACH SECTION <article class="section-wrapper".. :
+             - remember to use a unique id, 
+             - (optional) set a "data-custom-background-img" attribute with a link to custom background image which will be used when the viewer scrolls to this section -->
+        <article id="attractions" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images/bg7.jpg">
+          <div class="content-wrapper mid-vertical-positioning clearfix">
+            <div class="col-sm-10 col-md-9 pull-right">
 
-<h3>Weather</h3>
-  <p><%= @weather.current_weather(@location)["temp_string"] %></p>
-  <p><%= @weather.forecast_text(@location) %></p>
+                <h1 class="section-title"><%= @location.city %> Attractions</h1>
 
-<h3>Lodging</h3>
+                <div class="tabpanel styled-tabs uniform-height" role="tabpanel">
 
-  <%- @lodging_analytics.each do |bucket| -%>
-    <p>Beds: <%= bucket.beds %>, Avg Cost/Night: $<%= bucket.average_cost.round(2) %> </p><br>
-  <%- end -%>
+                  <!-- Nav tabs -->
+                  <!-- The "text-hidden-xs" attribute determines whether to show or hide tab text on mobile vieports ("true" - text is hidden) -->
+                  <ul class="nav nav-tabs" role="tablist" text-hidden-xs="true">
+                    <!-- Each tab should be structure as follows. Link href should be unique and match the ID of the respective tab-pane below. It has to match also with the "aria-controls" attribute. -->
+                    <!-- <i> represents the tab icon, <span> represents the tab text. -->
+                    <!-- The tab with <li class="active"> is the tab which is enabled by default -->
+                    <li role="presentation" class="active"><a href="#tabs-tab1" aria-controls="tabs-tab1" role="tab" data-toggle="tab"><i class="icon fa fa-diamond"></i><span>Attraction Type 1</span></a></li>
+                    <li role="presentation"><a href="#tabs-tab2" aria-controls="tabs-tab2" role="tab" data-toggle="tab"><i class="icon fa fa-train"></i><span>Attraction Type 2</span></a></li>
+                    <li role="presentation"><a href="#tabs-tab3" aria-controls="tabs-tab3" role="tab" data-toggle="tab"><i class="icon fa fa-coffee"></i><span>Attraction Type 3</span></a></li>
+                  </ul>
 
-  <ul>
-    <% @sample_lodgings.each do |lodging| %>
-    <li><%= lodging.name %></li>
-    <% end %>
-  </ul>
+                  <!-- Tab panes -->
+                  <div class="tab-content">
 
-  <br>
+                    <!-- Each tab pane is contained in the .tab-pane container with the following structure. Its ID should be unique and match with the tab link above -->
+                    <!-- It make container all generic content (text, images, etc). To initialise functions after tab-pane is shown, you need to use Events which are described in the documentation. -->
+                    <!-- The tab which is enabled by default should include these classes: "in active" -->
+                    <div role="tabpanel" class="tab-pane fade in active" id="tabs-tab1">
+                      <img src="assets/images/other_images/tabs-icon4.png" class="pull-right hidden-xs">
+                      <h4>Attraction Type 1</h4>
 
-<h3>Attractions</h3>
+                      <ul id="attraction-list">
+                          <%= render partial: "locations/attraction", collection: @location.attractions, as: :attraction %>
+                        </ul>
+                    </div>
 
-<ul id="attraction-list">
-  <%= render partial: "locations/attraction", collection: @location.attractions, as: :attraction %>
-</ul>
+                    <div role="tabpanel" class="tab-pane fade" id="tabs-tab2">
+                      <img src="assets/images/other_images/tabs-icon3.png" class="pull-right hidden-xs">
+                      <h4>Maecenas rhoncus tortor nec mi congue</h4>
+                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio.</p>
+                    </div>
 
-<%= form_for([@location, Attraction.new], html: {id: "attraction-form"}, :remote => true) do |f| %>
-  <%= f.text_field :name, placeholder: "Attraction Name"  %>
-  <%= f.text_area :description, placeholder: "Description" %>
-  <%= f.text_field :attraction_type, placeholder: "Type" %>
-  <%= f.submit %>
-<% end %>
+                    <div role="tabpanel" class="tab-pane fade" id="tabs-tab3">
+                      <img src="assets/images/other_images/tabs-icon2.png" class="pull-right hidden-xs">
+                      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h4>
+                      <p>Nunc accumsan sapien eu tortor fringilla, et condimentum metus pellentesque. Maecenas rhoncus tortor nec mi congue aliquet. Integer eu turpis scelerisque, iaculis magna non, tempor sem. Quisque consectetur nisi eu felis euismod, sit amet faucibus justo molestie. Ut pretium sapien dui, id facilisis metus interdum pharetra.</p>
+                    </div>
+                    
+                  </div><!-- .tab-content -->
 
+                </div><!-- .tabpanel -->
 
-<h3>Images</h3>
+            </div><!-- .col-sm-10 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->  
+        <!-- ==================== END: SECTION TYPE: Tabs ==================== -->
 
-<% @location.images.each do |image| %>
+        <!-- ==================== SECTION TYPE: Contact ==================== -->
+        <!-- This type of section should contain text (contact details) and a contact form -->
+        <!-- FOR EACH SECTION <article class="section-wrapper".. :
+             - remember to use a unique id, 
+             - (optional) set a "data-custom-background-img" attribute with a link to custom background image which will be used when the viewer scrolls to this section -->
+        <article id="share" class="section-wrapper clearfix">
+          <div class="content-wrapper clearfix">
 
-  <div class="col-md-4">
-    <a href="<%= image.source %>" class="gallery-img" target="_blank">
-      <img src="<%= image.url %>" alt="<%= image.caption %>" style="width:200px;height:200px">
-    </a>
-  </div>
+              <!-- Start: Section content to edit -->
+            
+              <h1 class="section-title">Been here?</h1>
+              <h3>Share an attraction.</h3>
 
-<% end %>
+                <!-- CONTACT FORM -->
+                <div class="col-sm-7 col-md-9">
+                  <%= form_for([@location, @attraction], :remote => true) do |f| %>
+                    <!-- form left col -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                      <%= f.text_field :name, placeholder: "Attraction Name" %>
+                      </div>  
+
+                      <div class="form-group">
+                          <%= f.text_field :attraction_type, placeholder: "Type" %>
+                      </div>      
+                    </div><!-- end: form left col -->
+                    <!-- form right col -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <%= f.text_area :description, placeholder: "Description" %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.submit %>
+                      </div>            
+                    </div><!-- end: form right col -->
+                  <% end %>
+                </div><!-- end: CONTACT FORM -->
+
+              <!-- End: Section content to edit -->
+
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+        <!-- ==================== ENDL SECTION TYPE: Contact ==================== -->
+
+      </section><!-- #main-content -->
+      <!-- ==================== END: MAIN CONTENT ==================== --> 
+    </div><!-- #outer-container -->
+  </body>
