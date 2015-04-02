@@ -38,9 +38,10 @@
 
                 <!-- <p> text in .feature-text is larger  -->
                 <section class="feature-text">
-                  <h1><%= @location.city %></h1>
-                  <p><%= @location.country %></p>
-                  <p class="feature-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod blanditiis, voluptas in! Doloribus, maxime, blanditiis. Facere error reprehenderit aut, praesentium obcaecati possimus unde, illum in rem vero voluptatibus sequi cupiditate.</p>
+                  <h1><strong><%= @location.city %>,</strong> <%= @location.country %></h1>
+                  <h2><%= @location.region %></h2>
+                  <img src="/../public/rabbit.jpg"/>
+                  <p class="feature-paragraph"><%= @location.description %> </p>
                   <h4>Current Weather</h4>
                   <p><%= @weather.current_weather(@location)["temp_string"] %></p>
                   <p><%= @weather.forecast_text(@location) %></p>
