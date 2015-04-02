@@ -1,61 +1,165 @@
-<!-- 1. Hero image specific to the city selected (FLICKR API)
-2. City Name in pretty font (DB)
-3. Icon menu options (side nav w anchor links + scrolling)
-  - gallery? (FLICKR API)
-  - attractions (SEEDING THE DB MANUALLY)
-  - lodgings (ZILYO API)
-  - weather (WUNDERGROUND API)
-4. Links to index & api sponsors -->
+ <body>
+    <!-- Outer Container -->
+    <div id="outer-container">
+
+      <!-- Left Sidebar -->
+      <section id="left-sidebar">
 
 
-<h1><%= @location.city %></h1>
+        <!-- Menu Icon for smaller viewports -->
+        <div id="mobile-menu-icon"></span></div>
 
-<h3>Weather</h3>
-  <p><%= @weather.current_weather(@location)["temp_string"] %></p>
-  <p><%= @weather.forecast_text(@location) %></p>
+        <!-- ==================================================================
+        MAIN MENU
+        ==================================================================  -->
+        <ul id="main-menu">
+          <li id="menu-item-tabs" class="menu-item scroll"><a href="#lodgings">Lodging</a></li>
+          <li id="menu-item-grid" class="menu-item scroll"><a href="#attractions">Attractions</a></li>
+          <li id="menu-item-featured" class="menu-item scroll"><a href="#gallery">Image Gallery</a></li>
+        </ul>
+        <!-- ==================== END: MAIN MENU ==================== -->
 
-<h3>Lodging</h3>
+      </section><!-- #left-sidebar -->
+      <!-- end: Left Sidebar -->
 
-  <%- @lodging_analytics.each do |bucket| -%>
-    <p>Beds: <%= bucket.beds %>, Avg Cost/Night: $<%= bucket.average_cost.round(2) %> </p><br>
-  <%- end -%>
+      <!-- ==================================================================
+      MAIN CONTENT
+      ==================================================================  -->
+      <!-- all the website sections are contained in the <article> tag with class ".section-wrapper" and a unique id.
+           - to edit / remove / create website sections, you have to handle the content contained in these <article> tags -->
+      <section id="main-content" class="clearfix">
 
-  <ul>
-    <% @sample_lodgings.each do |lodging| %>
-    <li><%= lodging.name %></li>
-    <% end %>
-  </ul>
-
-  <br>
-
-<h3>Attractions</h3>
-
-<ul id="attraction-list">
-  <%= render partial: "locations/attraction", collection: @location.attractions, as: :attraction %>
-</ul>
-
-<div id="modal-background">
-  <div id="attraction-edit">
-  </div>
-</div>
+        <!-- ==================== SECTION TYPE: Intro Text ==================== -->
+        <!-- This type of section should contain heading and intro paragraph. It can also include links to other sections -->
+        <article id="intro" class="section-wrapper clearfix">
+          <div class="content-wrapper clearfix">
+            <div class="col-sm-10 col-md-9 pull-right">
 
 
-<%= form_for([@location, Attraction.new], html: {id: "attraction-form"}, :remote => true) do |f| %>
-  <%= f.text_field :name, placeholder: "Attraction Name"  %>
-  <%= f.text_area :description, placeholder: "Description" %>
-  <%= f.text_field :attraction_type, placeholder: "Type" %>
-  <%= f.submit %>
-<% end %>
+                <!-- <p> text in .feature-text is larger  -->
+                <section class="feature-text">
+                  <h1><%= @location.city %></h1>
+                  <p><%= @location.country %></p>
+                  <p class="feature-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod blanditiis, voluptas in! Doloribus, maxime, blanditiis. Facere error reprehenderit aut, praesentium obcaecati possimus unde, illum in rem vero voluptatibus sequi cupiditate.</p>
+                  <h4>Current Weather</h4>
+                  <p><%#= @weather.current_weather(@location)["temp_string"] %></p>
+                  <p><%#= @weather.forecast_text(@location) %></p>
+                  <!-- to add scrolling effects to links linking to same page section, add .link-scroll class -->
+                </section>
+           </div><!-- .col-sm-10 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+        <!-- ==================== END: SECTION TYPE: Intro Text ==================== -->
+
+        <!-- ==================== SECTION TYPE: Features Grid ==================== -->
+
+        <article id="lodgings" class="section-wrapper clearfix">
+          <div class="content-wrapper clearfix">
+            <div class="col-sm-11 col-md-10 pull-right">
+
+              <!-- Start: Section content to edit -->
+
+                <h1 class="section-title">Lodgings</h1>
+
+                <!-- grid -->
+                <!-- change class "clearfix-for-2cols" to number of columns to correspond with "col-md-6" class for each grid item -->
+                <!-- check add_clear_items_to_fix_grid_items_different_heights_issue() function -->
+                <section class="grid row clearfix clearfix-for-2cols">
+                  <% @sample_lodgings.each do |lodging| %> <!-- featuring sample longings -->
+                  <!-- grid item -->
+                  <div class="grid-item col-md-6">
+                    <div class="item-content clearfix">
+                      <!-- <img data-img-src="assets/images/other_images/transp-image1.png" class="lazy icon" alt="Lorem Ipsum"> -->
+                      <!-- if you want to use a custom icon instead, replace the below <span> with the commented <img> above -->
+                      <span class="icon fa fa-area-chart"></span>
+                      <div class="text-content">
+                        <h5><%= lodging.name %></h5>
+                        <p><%= lodging.description.truncate(100, separator: ' ') %></p>
+                      </div>
+                    </div><!-- end: .item-content -->
+                  </div><!-- end: .grid-item -->
+                  <% end %> <!-- featuring sample longings END -->
+                </section><!-- end: grid -->
+
+              <!-- End: Section content to edit -->
+
+            </div><!-- .col-sm-11 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+        <!-- ==================== END: SECTION TYPE: Features Grid ==================== -->
 
 
-<h3>Images</h3>
+        <!-- ==================== SECTION TYPE: Tabs ==================== -->
+        <article id="attractions" class="section-wrapper clearfix">
+          <%= render "locations/attraction_section" %>
+          <%= render "locations/attraction_form" %>
+        </article><!-- .section-wrapper -->
+        <!-- ==================== END: SECTION TYPE: Tabs ==================== -->
 
-<% @location.images.each do |image| %>
+      <!-- ==================== SECTION TYPE: Featured Items ==================== -->
+        <!-- This type of section should contain a max. of 3 items each consisting of an image and text. Each item may be linked -->
+        <!-- FOR EACH SECTION <article class="section-wrapper".. :
+             - remember to use a unique id,
+             - (optional) set a "data-custom-background-img" attribute with a link to custom background image which will be used when the viewer scrolls to this section -->
+        <article id="gallery" class="section-wrapper clearfix">
+          <div class="content-wrapper clearfix">
+            <div class="col-sm-11 pull-right">
 
-  <div class="col-md-4">
-    <a href="<%= image.source %>" class="gallery-img" target="_blank">
-      <img src="<%= image.url %>" alt="<%= image.caption %>" style="width:200px;height:200px">
-    </a>
-  </div>
+              <!-- Start: Section content to edit -->
 
-<% end %>
+                <h1 class="section-title">Featured</h1>
+
+                <!-- feature columns -->
+                <section class="feature-columns row clearfix">
+
+                  <!-- FEATURED ITEM 3 -->
+                  <article class="feature-col col-md-4">
+                    <!-- to make a popup/modal link add an onClick function call to the function:
+                        - populate_and_open_modal(event, '[id of popup content container - see below]', '[optional - selector to scroll to inside popup]', '[optional - add class to the modal container]') -->
+                    <!-- if you don't want to link the featured item, replace the below <a> with a <div class="thumbnail"> -->
+                    <a href="" onclick="populate_and_open_modal(event, 'modal-content-8', '', 'full-size');" class="thumbnail linked">
+                      <div class="image-container">
+                        <img data-img-src="#" class="lazy item-thumbnail" alt="Lorem Ipsum">
+                      </div>
+                      <div class="caption">
+                        <h5><%= @location.city%> Gallery </h5>
+                        <p>See the sites through the eyes of other travelers.</p>
+                      </div><!-- .caption -->
+                    </a><!-- .thumbnail -->
+
+                    <!-- content which will be shown in the popup/modal when clicking on the above link
+                        - it is important to set a unique id -->
+                    <div class="content-to-populate-in-modal" id="modal-content-8">
+                      <h1><%= @location.city%> Gallery</h1>
+                      <!-- alt image slider inside popup -->
+                      <!-- documentation for Owl Carousel: http://www.owlgraphic.com/owlcarousel/#how-to -->
+                      <!-- every Owl Carousel with class .popup-alt-image-gallery are initialised with same parameters when popup is showing (initialised in /js/initialise-functions.js) -->
+                      <div id="unique-id-for-alt-image-slider" class="owl-carousel popup-alt-image-gallery">
+
+                      <% @location.images.each do |image| %>
+                        <div class="item"><a href="<%= image.url %>" data-lightbox="popup-alt-gallery"><img class="lazyOwl" data-src="#"></a></div>
+                        <% end %>
+                      </div>
+                    </div><!-- #modal-content-8 -->
+
+                  </article>
+                  <!-- END: FEATURED ITEM 3 -->
+
+                </section><!-- end: .feature-columns -->
+
+              <!-- End: Section content to edit -->
+
+            </div><!-- .col-sm-10 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+        <!-- ==================== END: SECTION TYPE: Featured Items ==================== -->
+
+    </div><!-- #outer-container -->
+    <!-- end: Outer Container -->
+
+    <!-- IE9 form fields placeholder fix -->
+    <!--[if lt IE 9]>
+    <script>contact_form_IE9_placeholder_fix();</script>
+    <![endif]-->
+
+  </body>

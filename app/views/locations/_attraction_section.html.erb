@@ -1,0 +1,48 @@
+<div class="content-wrapper mid-vertical-positioning clearfix">
+  <div class="col-sm-10 col-md-9 pull-right">
+
+      <h1 class="section-title">Attractions</h1>
+
+      <div class="tabpanel styled-tabs uniform-height" role="tabpanel">
+
+        <!-- Nav tabs -->
+        <!-- The "text-hidden-xs" attribute determines whether to show or hide tab text on mobile vieports ("true" - text is hidden) -->
+        <ul class="nav nav-tabs" role="tablist" text-hidden-xs="true">
+          <!-- Each tab should be structure as follows. Link href should be unique and match the ID of the respective tab-pane below. It has to match also with the "aria-controls" attribute. -->
+          <!-- <i> represents the tab icon, <span> represents the tab text. -->
+          <!-- The tab with <li class="active"> is the tab which is enabled by default -->
+          <li role="presentation" class="active"><a href="#tabs-tab1" aria-controls="tabs-tab1" role="tab" data-toggle="tab"><h4><span>Landmarks</span></h4></a></li>
+          <li role="presentation"><a href="#tabs-tab2" aria-controls="tabs-tab2" role="tab" data-toggle="tab"><h4><span>Dining</span></h4></a></li>
+          <li role="presentation"><a href="#tabs-tab3" aria-controls="tabs-tab3" role="tab" data-toggle="tab"><h4><span>Cultural</span></h4></a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+
+          <!-- Each tab pane is contained in the .tab-pane container with the following structure. Its ID should be unique and match with the tab link above -->
+          <!-- It make container all generic content (text, images, etc). To initialise functions after tab-pane is shown, you need to use Events which are described in the documentation. -->
+          <!-- The tab which is enabled by default should include these classes: "in active" -->
+          <div role="tabpanel" class="tab-pane fade in active" id="tabs-tab1">
+            <div class="attraction-view" id="Landmarks-view">
+              <%= attraction_by_type("Landmarks") %>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane fade" id="tabs-tab2">
+            <div class="attraction-view" id="Dining-view">
+              <%= attraction_by_type("Dining") %>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane fade" id="tabs-tab3">
+            <div class="attraction-view" id="Cultural-view">
+              <%= attraction_by_type("Cultural") %>
+            </div>
+          </div>
+
+        </div><!-- .tab-content -->
+
+      </div><!-- .tabpanel -->
+
+  </div><!-- .col-sm-10 -->
+</div><!-- .content-wrapper -->

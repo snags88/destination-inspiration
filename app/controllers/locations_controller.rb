@@ -9,5 +9,6 @@ class LocationsController < ApplicationController
     @sample_lodgings = @location.lodgings.sample(4)
     @lodging_analytics = Lodging.lodging_query_array(@location)
     @weather = Wunderground.new
+    @attraction = Attraction.new
   end
 end
