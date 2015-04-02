@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331191644) do
+ActiveRecord::Schema.define(version: 20150402152054) do
 
   create_table "attractions", force: :cascade do |t|
     t.string   "name"
@@ -78,10 +78,11 @@ ActiveRecord::Schema.define(version: 20150331191644) do
     t.string   "city"
     t.string   "country"
     t.string   "region"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.float    "longitude"
     t.float    "latitude"
+    t.text     "description"
   end
 
   create_table "lodgings", force: :cascade do |t|

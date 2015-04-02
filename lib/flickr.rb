@@ -23,6 +23,7 @@ class Flickr
   def collect_gallery
 
     @gallery ||= random_photos.collect do |photo|
+
       # FOR THE STATIC URL:
         farm_id = photo["farm"]
         server_id = photo["server"]
