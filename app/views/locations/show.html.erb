@@ -4,13 +4,13 @@
 
       <!-- Left Sidebar -->
       <section id="left-sidebar">
-      
+
 
         <!-- Menu Icon for smaller viewports -->
         <div id="mobile-menu-icon"></span></div>
 
         <!-- ==================================================================
-        MAIN MENU 
+        MAIN MENU
         ==================================================================  -->
         <ul id="main-menu">
           <li id="menu-item-tabs" class="menu-item scroll"><a href="#lodgings">Lodging</a></li>
@@ -28,7 +28,7 @@
       <!-- all the website sections are contained in the <article> tag with class ".section-wrapper" and a unique id.
            - to edit / remove / create website sections, you have to handle the content contained in these <article> tags -->
       <section id="main-content" class="clearfix">
-        
+
         <!-- ==================== SECTION TYPE: Intro Text ==================== -->
         <!-- This type of section should contain heading and intro paragraph. It can also include links to other sections -->
         <article id="intro" class="section-wrapper clearfix">
@@ -42,8 +42,8 @@
                   <p><%= @location.country %></p>
                   <p class="feature-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod blanditiis, voluptas in! Doloribus, maxime, blanditiis. Facere error reprehenderit aut, praesentium obcaecati possimus unde, illum in rem vero voluptatibus sequi cupiditate.</p>
                   <h4>Current Weather</h4>
-                  <p><%= @weather.current_weather(@location)["temp_string"] %></p>
-                  <p><%= @weather.forecast_text(@location) %></p>
+                  <p><%#= @weather.current_weather(@location)["temp_string"] %></p>
+                  <p><%#= @weather.forecast_text(@location) %></p>
                   <!-- to add scrolling effects to links linking to same page section, add .link-scroll class -->
                 </section>
 
@@ -63,7 +63,7 @@
               <!-- Start: Section content to edit -->
 
                 <h1 class="section-title">Lodgings</h1>
-                
+
                 <!-- grid -->
                 <!-- change class "clearfix-for-2cols" to number of columns to correspond with "col-md-6" class for each grid item -->
                 <!-- check add_clear_items_to_fix_grid_items_different_heights_issue() function -->
@@ -94,109 +94,15 @@
 
         <!-- ==================== SECTION TYPE: Tabs ==================== -->
         <article id="attractions" class="section-wrapper clearfix">
-          <div class="content-wrapper mid-vertical-positioning clearfix">
-            <div class="col-sm-10 col-md-9 pull-right">
-
-                <h1 class="section-title"><%= @location.city %> Attractions</h1>
-
-                <div class="tabpanel styled-tabs uniform-height" role="tabpanel">
-
-                  <!-- Nav tabs -->
-                  <!-- The "text-hidden-xs" attribute determines whether to show or hide tab text on mobile vieports ("true" - text is hidden) -->
-                  <ul class="nav nav-tabs" role="tablist" text-hidden-xs="true">
-                    <!-- Each tab should be structure as follows. Link href should be unique and match the ID of the respective tab-pane below. It has to match also with the "aria-controls" attribute. -->
-                    <!-- <i> represents the tab icon, <span> represents the tab text. -->
-                    <!-- The tab with <li class="active"> is the tab which is enabled by default -->
-                    <li role="presentation" class="active"><a href="#tabs-tab1" aria-controls="tabs-tab1" role="tab" data-toggle="tab"><i class="icon fa fa-diamond"></i><span>Attraction Type 1</span></a></li>
-                    <li role="presentation"><a href="#tabs-tab2" aria-controls="tabs-tab2" role="tab" data-toggle="tab"><i class="icon fa fa-train"></i><span>Attraction Type 2</span></a></li>
-                    <li role="presentation"><a href="#tabs-tab3" aria-controls="tabs-tab3" role="tab" data-toggle="tab"><i class="icon fa fa-coffee"></i><span>Attraction Type 3</span></a></li>
-                  </ul>
-
-                  <!-- Tab panes -->
-                  <div class="tab-content">
-
-                    <!-- Each tab pane is contained in the .tab-pane container with the following structure. Its ID should be unique and match with the tab link above -->
-                    <!-- It make container all generic content (text, images, etc). To initialise functions after tab-pane is shown, you need to use Events which are described in the documentation. -->
-                    <!-- The tab which is enabled by default should include these classes: "in active" -->
-                    <div role="tabpanel" class="tab-pane fade in active" id="tabs-tab1">
-                      <img src="#" class="pull-right hidden-xs">
-                      <h4>Attraction Type 1</h4>
-
-                      <ul id="attraction-list">
-                          <%= render partial: "locations/attraction", collection: @location.attractions, as: :attraction %>
-                      </ul>
-                    </div>
-
-                    <div role="tabpanel" class="tab-pane fade" id="tabs-tab2">
-                      <img src="#" class="pull-right hidden-xs">
-                      <h4>Maecenas rhoncus tortor nec mi congue</h4>
-                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis. Duis dictum lorem metus, vitae dapibus risus imperdiet nec. Suspendisse molestie lorem odio.</p>
-                    </div>
-
-                    <div role="tabpanel" class="tab-pane fade" id="tabs-tab3">
-                      <img src="#" class="pull-right hidden-xs">
-                      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h4>
-                      <p>Nunc accumsan sapien eu tortor fringilla, et condimentum metus pellentesque. Maecenas rhoncus tortor nec mi congue aliquet. Integer eu turpis scelerisque, iaculis magna non, tempor sem. Quisque consectetur nisi eu felis euismod, sit amet faucibus justo molestie. Ut pretium sapien dui, id facilisis metus interdum pharetra.</p>
-                    </div>
-                    
-                  </div><!-- .tab-content -->
-
-                </div><!-- .tabpanel -->
-
-            </div><!-- .col-sm-10 -->
-          </div><!-- .content-wrapper -->
-        </article><!-- .section-wrapper -->  
-        <!-- ==================== END: SECTION TYPE: Tabs ==================== -->
-
-        <!-- ==================== SECTION TYPE: Contact ==================== -->
-        <!-- This type of section should contain text (contact details) and a contact form -->
-        <!-- FOR EACH SECTION <article class="section-wrapper".. :
-             - remember to use a unique id, 
-             - (optional) set a "data-custom-background-img" attribute with a link to custom background image which will be used when the viewer scrolls to this section -->
-        <article id="add" class="section-wrapper clearfix">
-          <div class="content-wrapper clearfix">
-
-              <!-- Start: Section content to edit -->
-            
-              <h1 class="section-title">Been here?</h1>
-              <h3>Share an attraction.</h3>
-
-                <!-- CONTACT FORM -->
-                <div class="col-sm-7 col-md-9">
-                  <%= form_for([@location, @attraction], :remote => true) do |f| %>
-                    <!-- form left col -->
-                    <div class="col-md-6">
-                      <div class="form-group">
-                      <%= f.text_field :name, placeholder: "Attraction Name" %>
-                      </div>  
-
-                      <div class="form-group">
-                          <%= f.text_field :attraction_type, placeholder: "Type" %>
-                      </div>      
-                    </div><!-- end: form left col -->
-                    <!-- form right col -->
-                    <div class="col-md-6">
-                      <div class="form-group">
-                          <%= f.text_area :description, placeholder: "Description" %>
-                      </div>
-                      <div class="form-group">
-                        <%= f.submit %>
-                      </div>            
-                    </div><!-- end: form right col -->
-                  <% end %>
-                </div><!-- end: CONTACT FORM -->
-
-              <!-- End: Section content to edit -->
-
-          </div><!-- .content-wrapper -->
+          <%= render "locations/attraction_section" %>
+          <%= render "locations/attraction_form" %>
         </article><!-- .section-wrapper -->
-        <!-- ==================== ENDL SECTION TYPE: Contact ==================== -->
-
+        <!-- ==================== END: SECTION TYPE: Tabs ==================== -->
 
       <!-- ==================== SECTION TYPE: Featured Items ==================== -->
         <!-- This type of section should contain a max. of 3 items each consisting of an image and text. Each item may be linked -->
         <!-- FOR EACH SECTION <article class="section-wrapper".. :
-             - remember to use a unique id, 
+             - remember to use a unique id,
              - (optional) set a "data-custom-background-img" attribute with a link to custom background image which will be used when the viewer scrolls to this section -->
         <article id="gallery" class="section-wrapper clearfix">
           <div class="content-wrapper clearfix">
@@ -205,13 +111,13 @@
               <!-- Start: Section content to edit -->
 
                 <h1 class="section-title">Featured</h1>
-              
+
                 <!-- feature columns -->
                 <section class="feature-columns row clearfix">
 
                   <!-- FEATURED ITEM 3 -->
                   <article class="feature-col col-md-4">
-                    <!-- to make a popup/modal link add an onClick function call to the function: 
+                    <!-- to make a popup/modal link add an onClick function call to the function:
                         - populate_and_open_modal(event, '[id of popup content container - see below]', '[optional - selector to scroll to inside popup]', '[optional - add class to the modal container]') -->
                     <!-- if you don't want to link the featured item, replace the below <a> with a <div class="thumbnail"> -->
                     <a href="" onclick="populate_and_open_modal(event, 'modal-content-8', '', 'full-size');" class="thumbnail linked">
@@ -224,7 +130,7 @@
                       </div><!-- .caption -->
                     </a><!-- .thumbnail -->
 
-                    <!-- content which will be shown in the popup/modal when clicking on the above link 
+                    <!-- content which will be shown in the popup/modal when clicking on the above link
                         - it is important to set a unique id -->
                     <div class="content-to-populate-in-modal" id="modal-content-8">
                       <h1><%= @location.city%> Gallery</h1>
@@ -249,7 +155,7 @@
             </div><!-- .col-sm-10 -->
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->
-        <!-- ==================== END: SECTION TYPE: Featured Items ==================== -->  
+        <!-- ==================== END: SECTION TYPE: Featured Items ==================== -->
 
     </div><!-- #outer-container -->
     <!-- end: Outer Container -->
@@ -257,6 +163,6 @@
     <!-- IE9 form fields placeholder fix -->
     <!--[if lt IE 9]>
     <script>contact_form_IE9_placeholder_fix();</script>
-    <![endif]-->  
+    <![endif]-->
 
   </body>

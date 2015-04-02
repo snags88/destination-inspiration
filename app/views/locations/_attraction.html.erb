@@ -1,5 +1,13 @@
-<li>
-  <p>Name: <%= attraction.name %></p>
-  <p>Description: <%= attraction.description %></p>
-  <p>type: <%= attraction.attraction_type %></p>
-</li>
+<div class="attraction-container">
+  <div class="attraction-header clearfix">
+    <div class="attraction-name pull-left">
+      <h4><%= attraction.name %></h4>
+    </div>
+    <div class="attraction-modify pull-right">
+      <h5>Edit | Delete</h5>
+    </div>
+  </div>
+  <div class="attraction-body">
+    <p><%= attraction.description %></p>
+  </div>
+</div>
