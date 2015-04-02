@@ -10,5 +10,5 @@ class Location < ActiveRecord::Base
   has_many :images
 
   validates :city, :country, :longitude, :latitude, :presence => true
-
+  validates :city, uniqueness: true
 end
