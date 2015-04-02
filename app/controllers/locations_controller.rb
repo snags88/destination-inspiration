@@ -6,9 +6,13 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
-    @sample_lodgings = @location.lodgings.sample(4)
-    @lodging_analytics = Lodging.lodging_query_array(@location)
+    
     @weather = Wunderground.new
+    
     @attraction = Attraction.new
+    
+    @lodging_analytics = Lodging.lodging_query_array(@location)
+    @sample_lodgings = @location.lodgings.sample(3)
+
   end
 end
