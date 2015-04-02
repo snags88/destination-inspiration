@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'locations#index'
   resources :locations do
-    resources :attractions, only: [:create, :update, :destroy], controller: 'locations/attractions'
+    resources :attractions, only: [:create, :edit, :update, :destroy], controller: 'locations/attractions'
   end
 
   # resources :locations do

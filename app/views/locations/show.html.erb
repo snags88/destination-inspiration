@@ -34,6 +34,12 @@
   <%= render partial: "locations/attraction", collection: @location.attractions, as: :attraction %>
 </ul>
 
+<div id="modal-background">
+  <div id="attraction-edit">
+  </div>
+</div>
+
+
 <%= form_for([@location, Attraction.new], html: {id: "attraction-form"}, :remote => true) do |f| %>
   <%= f.text_field :name, placeholder: "Attraction Name"  %>
   <%= f.text_area :description, placeholder: "Description" %>

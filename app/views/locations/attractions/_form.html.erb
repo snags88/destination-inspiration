@@ -1,0 +1,6 @@
+<%= form_for([@location, @attraction], html: {id: "attraction-edit-form"}, :remote => true) do |f| %>
+  <%= f.text_field :name, placeholder: "Attraction Name" %>
+  <%= f.text_area :description, placeholder: "Description" %>
+  <%= f.text_field :attraction_type, placeholder: "Type" %>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,5 @@
+$("#modal-background").fadeIn("slow");
+
+$("#attraction-edit").html("<%= j(render 'locations/attractions/form') %>")
+
+$("#attraction-edit-form input[type=text]:first").focus();

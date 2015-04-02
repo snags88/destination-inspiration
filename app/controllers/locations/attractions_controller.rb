@@ -6,6 +6,11 @@ class Locations::AttractionsController < ApplicationController
     @attraction.save
   end
 
+  def edit
+    @attraction = Attraction.find_by_params(params)
+    @location = @attraction.location
+  end
+
   def update
     @attraction = Attraction.find_by_params(params)
     @attraction.update(attraction_params)
