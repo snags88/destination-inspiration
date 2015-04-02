@@ -7,7 +7,7 @@
 
 
         <!-- Menu Icon for smaller viewports -->
-        <div id="mobile-menu-icon"></span></div>
+        <div id="mobile-menu-icon"></div>
 
         <!-- ==================================================================
         MAIN MENU
@@ -65,28 +65,40 @@
 
                 <h1 class="section-title">Lodgings</h1>
 
-                <!-- grid -->
-                <!-- change class "clearfix-for-2cols" to number of columns to correspond with "col-md-6" class for each grid item -->
-                <!-- check add_clear_items_to_fix_grid_items_different_heights_issue() function -->
-                <section class="grid row clearfix clearfix-for-2cols">
-                  <% @sample_lodgings.each do |lodging| %> <!-- featuring sample longings -->
+
+                <section class="grid row clearfix clearfix-for-3cols">
+                  <% @lodging_analytics.each do |bucket| %> <!-- featuring sample longings -->
                   <!-- grid item -->
-                  <div class="grid-item col-md-6">
+                  <div class="grid-item col-md-4">
                     <div class="item-content clearfix">
                       <!-- <img data-img-src="assets/images/other_images/transp-image1.png" class="lazy icon" alt="Lorem Ipsum"> -->
                       <!-- if you want to use a custom icon instead, replace the below <span> with the commented <img> above -->
                       <span class="icon fa fa-area-chart"></span>
-                      <div class="text-content">
-                        <h5><%= lodging.name %></h5>
-                        <p><%= lodging.description.truncate(100, separator: ' ') %></p>
+                      <div class="text-content" >
+                        <h5>Beds: <%= bucket.beds %></h5>
+                        <p>Avg Cost/Night: $<%= bucket.average_cost.round(2)%></p>
                       </div>
                     </div><!-- end: .item-content -->
                   </div><!-- end: .grid-item -->
                   <% end %> <!-- featuring sample longings END -->
                 </section><!-- end: grid -->
 
-              <!-- End: Section content to edit -->
 
+                <section class="grid row clearfix clearfix-for-3cols">
+                  <% @sample_lodgings.each do |lodging| %> <!-- featuring sample longings -->
+                  <!-- grid item -->
+                  <div class="grid-item col-md-4">
+                    <div class="item-content clearfix">
+                      <!-- <img data-img-src="assets/images/other_images/transp-image1.png" class="lazy icon" alt="Lorem Ipsum"> -->
+                      <!-- if you want to use a custom icon instead, replace the below <span> with the commented <img> above -->
+                      <div class="text">
+                        <h5><%= link_to lodging.name, lodging.booking_url, target: "_blank"%></h5>
+                        <p><%= lodging.description.truncate(100, separator: ' ') %></p>
+                      </div>
+                    </div><!-- end: .item-content -->
+                  </div><!-- end: .grid-item -->
+                  <% end %> <!-- featuring sample longings END -->
+                </section><!-- end: grid -->
             </div><!-- .col-sm-11 -->
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->
@@ -157,7 +169,7 @@
           </div><!-- .content-wrapper -->
         </article><!-- .section-wrapper -->
         <!-- ==================== END: SECTION TYPE: Featured Items ==================== -->
-
+      </section><!-- #main-content -->
     </div><!-- #outer-container -->
     <!-- end: Outer Container -->
 
