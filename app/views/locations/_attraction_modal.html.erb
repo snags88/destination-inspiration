@@ -1,0 +1,25 @@
+<div id="new-attraction-btn">
+  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+    Add New Attraction (+)
+  </button>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="attractionForm" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="attractionForm">Share an attraction!</h4>
+      </div>
+
+      <div class="modal-body"><!-- MODAL BODY -->
+        <div class="container-fluid"><!-- CONTAINER -->
+          <div class="col-sm-7 col-md-9"><!-- CONTACT FORM -->
+            <%= render "locations/attractions/form"%>
+          </div><!-- end: CONTACT FORM -->
+        </div><!-- end: CONTAINER -->
+      </div><!-- end: MODAL BODY -->
+
+    </div><!-- end: MODAL CONTENT -->
+  </div><!-- end: MODAL DIALOG -->
+</div><!-- end: MODAL -->

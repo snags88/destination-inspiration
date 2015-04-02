@@ -1,4 +1,4 @@
-var $el = $("li[data-attraction-id=" + <%= @attraction.id %> + "]");
+var $el = $("div[data-attraction-id=" + <%= @attraction.id %> + "]");
 
 $el.slideUp(400, function(){
   $el.remove();

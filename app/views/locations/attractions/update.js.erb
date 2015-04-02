@@ -1,6 +1,6 @@
-$("#modal-background").fadeOut("slow");
+var newEl = "<%= j(render 'locations/attraction', attraction: @attraction) %>";
 
-var newLi = "<%= j(render 'locations/attraction', attraction: @attraction) %>";
-var $updatedElement = $("li[data-attraction-id=" + <%= @attraction.id %> + "]");
-$updatedElement.replaceWith(newLi);
+var $updatedElement = $("div[data-attraction-id=" + <%= @attraction.id %> + "]");
+$("#close-modal").trigger("click");
+$updatedElement.replaceWith(newEl);
 

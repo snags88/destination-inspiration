@@ -1,3 +1,4 @@
-var newLi = "<%= j(render 'locations/attraction', attraction: @attraction) %>";
+var newEl = "<%= j(render 'locations/attraction', attraction: @attraction) %>";
 $("#attraction-form")[0].reset();
-$(newLi).appendTo($("#attraction-list")).hide().slideDown(400);
+$("#close-modal").trigger("click");
+$(newEl).appendTo($("#<%= j(@attraction.attraction_type) %>-view"));

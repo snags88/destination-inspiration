@@ -1,5 +1,4 @@
-$("#modal-background").fadeIn("slow");
-
-$("#attraction-edit").html("<%= j(render 'locations/attractions/form') %>")
-
-$("#attraction-edit-form input[type=text]:first").focus();
+var $newForm = $("<%= j(render 'locations/attractions/form') %>")
+$("#attraction-form").replaceWith($newForm);
+$("#new-attraction-btn button").trigger("click");
+// $("#attraction-form input[type=text]:first").focus();
