@@ -1,4 +1,4 @@
-var newEl = "<%= j(render 'locations/attraction', attraction: @attraction) %>";
+var newEl = "<%= j(render 'locations/attractions/show', attraction: @attraction) %>";
 
 var $updatedElement = $("div[data-attraction-id=" + <%= @attraction.id %> + "]");
 $("#close-modal").trigger("click");

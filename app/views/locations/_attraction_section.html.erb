@@ -13,7 +13,7 @@
           <!-- The tab with <li class="active"> is the tab which is enabled by default -->
           <li role="presentation" class="active"><a href="#tabs-tab1" aria-controls="tabs-tab1" role="tab" data-toggle="tab"><h4><span>Landmarks</span></h4></a></li>
           <li role="presentation"><a href="#tabs-tab2" aria-controls="tabs-tab2" role="tab" data-toggle="tab"><h4><span>Dining</span></h4></a></li>
-          <li role="presentation"><a href="#tabs-tab3" aria-controls="tabs-tab3" role="tab" data-toggle="tab"><h4><span>Cultural</span></h4></a></li>
+          <li role="presentation"><a href="#tabs-tab3" aria-controls="tabs-tab3" role="tab" data-toggle="tab"><h4><span>Other</span></h4></a></li>
         </ul>
 
         <!-- Tab panes -->
@@ -35,8 +35,8 @@
           </div>
 
           <div role="tabpanel" class="tab-pane fade" id="tabs-tab3">
-            <div class="attraction-view" id="Cultural-view">
-              <%= attraction_by_type("Cultural") %>
+            <div class="attraction-view" id="Other-view">
+              <%= attraction_by_type("Other") %>
             </div>
           </div>
 

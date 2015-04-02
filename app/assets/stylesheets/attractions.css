@@ -22,3 +22,12 @@ div.modal-backdrop {
 .modal-body{
   color: #333333;
 }
+
+.control-label {
+  color: #fff;
+}
+
+.type-selection{
+  float: left;
+  margin-top: 15px;
+}

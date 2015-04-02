@@ -1,4 +1,4 @@
-var newEl = "<%= j(render 'locations/attraction', attraction: @attraction) %>";
+var newEl = "<%= j(render 'locations/attractions/show', attraction: @attraction) %>";
 $("#attraction-form")[0].reset();
 $("#close-modal").trigger("click");
 $(newEl).appendTo($("#<%= j(@attraction.attraction_type) %>-view"));
