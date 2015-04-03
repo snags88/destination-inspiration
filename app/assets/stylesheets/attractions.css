@@ -31,3 +31,17 @@ div.modal-backdrop {
   float: left;
   margin-top: 15px;
 }
+
+#overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: calc(100vh - 100px);
+  width: calc(100vw - 100px);
+  background-color: rgba(0,0,0,0.5);
+  margin: 50px;
+}
+
+#menu-item-page-nav{
+  margin-top: 20px;
+}

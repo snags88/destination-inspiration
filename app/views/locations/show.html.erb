@@ -1,4 +1,5 @@
  <body style="background-image: url('<%= @location.hero_image_url %>');">
+ <div id="overlay"></div>
     <!-- Outer Container -->
     <div id="outer-container">
 
@@ -38,7 +39,6 @@
 
                 <!-- <p> text in .feature-text is larger  -->
                 <section class="feature-text">
-                <h1 style="color: white;">TESTING 123</h1>
                   <h1><strong><%= @location.city %>,</strong> <%= @location.country %></h1>
                   <h2><%= @location.region %></h2>
                   <p class="feature-paragraph"><%= @location.description %> </p>
