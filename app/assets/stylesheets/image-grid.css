@@ -1,14 +1,26 @@
-#img-mosaic div.image a img{
-
+div.gallery-container{
+  margin-bottom: 15px;
 }
 
-div.container{
-  float: left;
-  width: 800px;
-  height: 600px;
+div.img-container {
+  height: 200px;
   overflow: hidden;
 }
 
-div.container:hover{
+div.border-container {
+  border: 4px white solid;
+  border-radius: 4px;
+}
 
+.img-container img.resized {
+  min-height: 200px;
+  min-width: 400px;
+}
+
+div.position-relative {
+  position: relative !important;
+}
+
+#gallery {
+  margin-top: 200px;
 }

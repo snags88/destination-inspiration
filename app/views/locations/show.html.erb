@@ -115,7 +115,7 @@
              - remember to use a unique id,
              - (optional) set a "data-custom-background-img" attribute with a link to custom background image which will be used when the viewer scrolls to this section -->
         <article id="gallery" class="section-wrapper clearfix">
-          <div class="content-wrapper clearfix">
+          <div class="content-wrapper clearfix position-relative">
             <div class="col-sm-11 pull-right">
 
               <!-- Start: Section content to edit -->
@@ -126,15 +126,17 @@
                 <section class="feature-columns row clearfix">
 
                   <!-- Gallery -->
-                      
+
                 <h5>All photos grabbed from Flickr!</h5>
                 <div id="img-mosaic" class="row">
                     <% @location.gallery_images.each do |pic| %>
-                      <div class="container">
-                        <div class="image col-lg-4 col-sm-6 col-xs-12">
-                          <a href="<%= pic.source %>" target="_blank">
-                            <img src="<%= pic.url %>" class="thumbnail img-responsive">
-                          </a>
+                      <div class="col-lg-4 col-sm-6 col-xs-12 gallery-container">
+                        <div class="border-container">
+                          <div class="img-container">
+                            <a href="<%= pic.source %>" target="_blank">
+                              <img src="<%= pic.url %>" class="img-responsive resized">
+                            </a>
+                          </div>
                         </div>
                       </div>
                     <% end %>
