@@ -1,14 +1,6 @@
-#img-mosaic div.image a img{
-
-}
-
-div.container{
-  float: left;
-  width: 800px;
-  height: 600px;
+div.gallery{
+  position: relative !important;
+  display: inline-block;
   overflow: hidden;
 }
 
-div.container:hover{
-
-}
