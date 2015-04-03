@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-locations = Location.create([
+locations = [
   {city: "Marrakech", country: "Morocco", region: "Africa", latitude: 31.630000, longitude: -8.008889, description: "Marrakech is a major city in the northwest African nation of Morocco. It is the fourth largest city in the country after Casablanca, Rabat and Fes, and is the capital of the mid-southwestern region of Marrakesh-Tensift-El Haouz..."},
   {city: "Siem Reap", country: "Cambodia", region: "Southeast Asia", latitude: 13.380936, longitude: 103.875046, description: "Siem Reap is the capital city of Siem Reap Province in northwestern Cambodia, and a popular resort town as the gateway to Angkor region. Siem Reap has colonial and Chinese-style architecture in the Old French Quarter, and around..."},
   {city: "Istanbul", country: "Turkey", region: "Europe", latitude: 41.005270, longitude: 28.976960, description: "Istanbul is the largest city in Turkey, constituting the country's economic, cultural, and historical heart. Istanbul is a transcontinental city in Eurasia, with its commercial and historical centre lying on the European side and..."},
@@ -17,7 +17,12 @@ locations = Location.create([
   {city: "Rome", country: "Italy", region: "Europe", latitude: 41.902783, longitude: 12.496366, description: "Rome is a city and special comune (named ''Roma Capitale'') in Italy. Rome is the capital of Italy and region of Lazio. With 2.9 million residents in 1,285 km2 (496.1 sq mi), it is also the country's largest and most populated comune..."},
   {city: "Buenos Aires", country: "Argentina", region: "South America", latitude: -34.603723, longitude: -58.381593, description: "Buenos Aires is the capital and largest city of Argentina, and the second-largest metropolitan area in South America, after Greater São Paulo. It is located on the western shore of the estuary of the Río de la Plata, on the continent's..."},
   {city: "New York City", country: "United States", region: "North America", latitude: 40.712784, longitude: -74.005941, description: "New York – often called New York City or the City of New York to distinguish it from the State of New York, of which it is a part – is the most populous city in the United States and the center of the New York metropolitan area, the... "}
-])
+]
+
+locations.each do |place_hash|
+  loc = Location.find_by(place_hash[:city])
+  loc.update(place_hash)
+  end
 
 Currency.seed_data
 
@@ -54,7 +59,7 @@ Location.find_by(city: "Buenos Aires").language_locations.create(:language => La
 Location.find_by(city: "Buenos Aires").language_locations.create(:language => Language.find_by(:name => "Italian"))
 Location.find_by(city: "New York City").language_locations.create(:language => Language.find_by(:name => "English"))
 
-Lodging.seed_data
+# Lodging.seed_data
 
 Location.find_by(city: "Marrakech").images.create({url: "https://farm9.staticflickr.com/8580/15680040273_2e3e51202b_b.jpg", source: "https://www.flickr.com/photos/marasweltreisen", image_type: "hero", caption: "Marrakech"})
 Location.find_by(city: "Siem Reap").images.create({url: "https://farm8.staticflickr.com/7447/8718052701_2e1a6b64da_h.jpg", source: " https://www.flickr.com/photos/chrisbastian", image_type: "hero", caption: "Siem Reap"})
