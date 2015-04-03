@@ -54,7 +54,7 @@ Location.find_by(city: "Buenos Aires").language_locations.create(:language => La
 Location.find_by(city: "Buenos Aires").language_locations.create(:language => Language.find_by(:name => "Italian"))
 Location.find_by(city: "New York City").language_locations.create(:language => Language.find_by(:name => "English"))
 
-# Lodging.seed_data
+Lodging.seed_data
 
 Location.find_by(city: "Marrakech").images.create({url: "https://farm9.staticflickr.com/8580/15680040273_2e3e51202b_b.jpg", source: "https://www.flickr.com/photos/marasweltreisen", image_type: "hero", caption: "Marrakech"})
 Location.find_by(city: "Siem Reap").images.create({url: "https://farm8.staticflickr.com/7447/8718052701_2e1a6b64da_h.jpg", source: " https://www.flickr.com/photos/chrisbastian", image_type: "hero", caption: "Siem Reap"})

@@ -11,4 +11,9 @@ class Location < ActiveRecord::Base
 
   validates :city, :country, :longitude, :latitude, :presence => true
   validates :city, uniqueness: true
+
+  def hero_image_url
+    self.images.where(:image_type => "hero").first.url
+  end
+
 end
