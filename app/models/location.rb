@@ -16,4 +16,8 @@ class Location < ActiveRecord::Base
     self.images.where(:image_type => "hero").first.url
   end
 
+  def gallery_images
+    self.images.where(image_type: 'gallery')
+  end
+
 end

@@ -120,43 +120,27 @@
 
               <!-- Start: Section content to edit -->
 
-                <h1 class="section-title">Featured</h1>
+                <h1 class="section-title">See more of <%= @location.city %></h1>
 
                 <!-- feature columns -->
                 <section class="feature-columns row clearfix">
 
-                  <!-- FEATURED ITEM 3 -->
-                  <article class="feature-col col-md-4">
-                    <!-- to make a popup/modal link add an onClick function call to the function:
-                        - populate_and_open_modal(event, '[id of popup content container - see below]', '[optional - selector to scroll to inside popup]', '[optional - add class to the modal container]') -->
-                    <!-- if you don't want to link the featured item, replace the below <a> with a <div class="thumbnail"> -->
-                    <a href="" onclick="populate_and_open_modal(event, 'modal-content-8', '', 'full-size');" class="thumbnail linked">
-                      <div class="image-container">
-                        <img data-img-src="#" class="lazy item-thumbnail" alt="Lorem Ipsum">
+                  <!-- Gallery -->
+                      
+                <h5>All photos grabbed from Flickr!</h5>
+                <div id="img-mosaic" class="row">
+                    <% @location.gallery_images.each do |pic| %>
+                      <div class="container">
+                        <div class="image col-lg-4 col-sm-6 col-xs-12">
+                          <a href="<%= pic.source %>" target="_blank">
+                            <img src="<%= pic.url %>" class="thumbnail img-responsive">
+                          </a>
+                        </div>
                       </div>
-                      <div class="caption">
-                        <h5><%= @location.city%> Gallery </h5>
-                        <p>See the sites through the eyes of other travelers.</p>
-                      </div><!-- .caption -->
-                    </a><!-- .thumbnail -->
+                    <% end %>
+                </div>
 
-                    <!-- content which will be shown in the popup/modal when clicking on the above link
-                        - it is important to set a unique id -->
-                    <div class="content-to-populate-in-modal" id="modal-content-8">
-                      <h1><%= @location.city%> Gallery</h1>
-                      <!-- alt image slider inside popup -->
-                      <!-- documentation for Owl Carousel: http://www.owlgraphic.com/owlcarousel/#how-to -->
-                      <!-- every Owl Carousel with class .popup-alt-image-gallery are initialised with same parameters when popup is showing (initialised in /js/initialise-functions.js) -->
-                      <div id="unique-id-for-alt-image-slider" class="owl-carousel popup-alt-image-gallery">
-
-                      <% @location.images.each do |image| %>
-                        <div class="item"><a href="<%= image.url %>" data-lightbox="popup-alt-gallery"><img class="lazyOwl" data-src="#"></a></div>
-                        <% end %>
-                      </div>
-                    </div><!-- #modal-content-8 -->
-
-                  </article>
-                  <!-- END: FEATURED ITEM 3 -->
+                  <!-- END: Gallery-->
 
                 </section><!-- end: .feature-columns -->
 
