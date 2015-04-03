@@ -43,8 +43,8 @@
                   <h2><%= @location.region %></h2>
                   <p class="feature-paragraph"><%= @location.description %> </p>
                   <h4>Current Weather</h4>
-                  <p><%#= @weather.current_weather(@location)["temp_string"] %></p>
-                  <p><%#= @weather.forecast_text(@location) %></p>
+                  <p><%= @weather.current_weather(@location)["temp_string"] %></p>
+                  <p><%= @weather.forecast_text(@location) %></p>
                   <!-- to add scrolling effects to links linking to same page section, add .link-scroll class -->
                 </section>
            </div><!-- .col-sm-10 -->
