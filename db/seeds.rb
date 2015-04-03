@@ -20,9 +20,9 @@ locations = [
 ]
 
 locations.each do |place_hash|
-  loc = Location.find_by(place_hash[:city])
+  loc = Location.find_by(:city => place_hash[:city])
   loc.update(place_hash)
-  end
+end
 
 Currency.seed_data
 
