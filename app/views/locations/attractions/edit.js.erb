@@ -1,4 +1,4 @@
-var $newForm = $("<%= j(render 'locations/attractions/form') %>")
+var $newForm = $("<%= j(render 'locations/attractions/form', attraction: @attraction) %>")
 $("#attraction-form").replaceWith($newForm);
 $("#new-attraction-btn button").trigger("click");
 // $("#attraction-form input[type=text]:first").focus();
