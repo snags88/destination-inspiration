@@ -21,10 +21,12 @@ locations = [
   {city: "Hvar", country: "Croatia", region: "Europe", latitude: 43.1333, longitude: 16.7333, description: "Hvar is a Croatian island in the Adriatic Sea, located off the Dalmatian coast, lying between the islands of Brač, Vis and Korčula..."}
 ]
 
-locations.each do |place_hash|
-  loc = Location.find_by(:city => place_hash[:city])
-  loc.update(place_hash)
-end
+# locations.each do |place_hash|
+#   loc = Location.find_by(:city => place_hash[:city])
+#   loc.update(place_hash)
+# end
+
+Location.create(locations)
 
 Currency.seed_data
 
