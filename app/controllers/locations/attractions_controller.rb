@@ -13,6 +13,7 @@ class Locations::AttractionsController < ApplicationController
 
   def update
     @attraction = Attraction.find_by_params(params)
+    @location = @attraction.location
     @attraction.update(attraction_params)
   end
 

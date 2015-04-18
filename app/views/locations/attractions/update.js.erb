@@ -4,7 +4,7 @@ var $newForm = $("<%= j(render 'locations/attractions/form', attraction: Attract
 var $updatedElement = $("div[data-attraction-id=" + <%= @attraction.id %> + "]");
 $("#attraction-form input[type=text]").val("");
 $("#attraction-form textarea").val("");
-$("#close-modal").trigger("click");
+$("button.close").trigger("click");
 $("#attraction-form").replaceWith($newForm);
 $updatedElement.replaceWith(newEl);
 
