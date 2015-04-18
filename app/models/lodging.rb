@@ -11,7 +11,7 @@ class Lodging < ActiveRecord::Base
   def self.avg_cost_by_bed(location, num_of_beds)
     select("AVG(nightly_cost) as average_cost, num_of_beds as beds, location_id, id").
     where("location_id = ? AND num_of_beds = ?", location.id, num_of_beds).
-    group("location_id, num_of_beds").
+    group("location_id, num_of_beds, id").
     first
   end
 
